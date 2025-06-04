@@ -46,21 +46,38 @@ class Controller:
         self._view.update_page()
 
     def handleCerca(self, e):
-        # nodo = int(self._view._ddNode.value)
-        #
-        # if self._view._ddNode.value == "":
-        #     self._view.txt_result.controls.clear()
-        #     self._view.txt_result.controls.append(ft.Text("Attenzione inserire l'id di un nodo"))
-        #     self._view.update_page()
-        #     return
-        #
-        # result = self._model.getLongestPath(nodo)
-        # self._view.txt_result.controls.append(ft.Text(f"Nodo di partenza: {nodo}"))
-        # for r in result:
-        #     self._view.txt_result.controls.append(ft.Text(f"{r}"))
-        # self._view.update_page()
+        nodo = int(self._view._ddNode.value)
+
+        if self._view._ddNode.value == "":
+            self._view.txt_result.controls.clear()
+            self._view.txt_result.controls.append(ft.Text("Attenzione inserire l'id di un nodo"))
+            self._view.update_page()
+            return
+
+        result = self._model.getLongestPath(nodo)
+        self._view.txt_result.controls.append(ft.Text(f"Nodo di partenza: {nodo}"))
+        for r in result:
+            self._view.txt_result.controls.append(ft.Text(f"{r}"))
+        self._view.update_page()
 
 
 
     def handleRicorsione(self, e):
-        pass
+        nodo = int(self._view._ddNode.value)
+
+        if self._view._ddNode.value == "":
+            self._view.txt_result.controls.clear()
+            self._view.txt_result.controls.append(ft.Text("Attenzione inserire l'id di un nodo"))
+            self._view.update_page()
+            return
+
+        bestPath, bestScore = self._model.bestPath(nodo)
+
+        self._view.txt_result.controls.append(ft.Text(f"Il miglio percorso che parte da {nodo} ha un peso massimo di "
+                                                      f"{bestScore} ed è il seguente:"))
+        for n in bestPath:
+            self._view.txt_result.controls.append(ft.Text(f"{n}"))
+        self._view.update_page()
+
+
+
