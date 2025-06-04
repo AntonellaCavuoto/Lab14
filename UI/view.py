@@ -25,6 +25,7 @@ class View(ft.UserControl):
         self._page.controls.append(self._title)
 
         self._ddStore = ft.Dropdown(label="Store")
+        self._controller.fillDDStore()
         self._txtIntK = ft.TextField(label="Numero giorni massimo K")
         self._btnCreaGrafo = ft.ElevatedButton(text="Crea Grafo", on_click=self._controller.handleCreaGrafo)
         cont = ft.Container(self._ddStore, width=250, alignment=ft.alignment.top_left)
@@ -37,6 +38,7 @@ class View(ft.UserControl):
                                            on_click=self._controller.handleCerca)
 
         self._ddNode = ft.Dropdown(label="Node")
+        self._controller.fillDDNodes()
         cont2 = ft.Container(self._ddNode, width=250, alignment=ft.alignment.top_left)
         row2 = ft.Row([cont2, ft.Container(self._btnCerca, width=250)
         ], alignment=ft.MainAxisAlignment.CENTER)
